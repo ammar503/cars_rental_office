@@ -19,14 +19,14 @@ class EndDialog extends StatelessWidget {
           children: [
             Text('Done', style: TextStyle(fontSize: 18, fontFamily: 'bolt')),
             SizedBox(
-              height: 30,
+              height: 15,
             ),
             Text(
               'All data get add to your Database',
               style: TextStyle(fontSize: 22, fontFamily: 'bolt'),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 30),
+            SizedBox(height: 15),
             Icon(
               Icons.done,
               color: Colors.green,
