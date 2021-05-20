@@ -1,9 +1,9 @@
-import 'package:cars_rental_office/models/CarInfo.dart';
+import '../models/CarInfo.dart';
 import 'package:cars_rental_office/screens/ViewCarDetails.dart';
 import 'package:cars_rental_office/utils/utils.dart';
 import 'package:flutter/material.dart';
 
-class CarDetailCard extends StatelessWidget {
+class CarDetailCard extends StatefulWidget {
   const CarDetailCard({
     Key key,
     @required this.carsDetail,
@@ -14,6 +14,11 @@ class CarDetailCard extends StatelessWidget {
   final int index;
 
   @override
+  _CarDetailCardState createState() => _CarDetailCardState();
+}
+
+class _CarDetailCardState extends State<CarDetailCard> {
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
@@ -21,7 +26,7 @@ class CarDetailCard extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => ViewCarDetails(
-              carInfo: carsDetail[index],
+              carInfo: widget.carsDetail[widget.index],
             ),
           ),
         );
@@ -55,7 +60,8 @@ class CarDetailCard extends StatelessWidget {
               ),
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: NetworkImage('${carsDetail[index].urlImage}'),
+                  image: NetworkImage(
+                      '${widget.carsDetail[widget.index].urlImage}'),
                   fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.circular(20),
@@ -70,13 +76,13 @@ class CarDetailCard extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('${carsDetail[index].dateOfFactor}'),
+                        Text('${widget.carsDetail[widget.index].dateOfFactor}'),
                         Icon(Icons.favorite_outline),
                       ],
                     ),
                     SizedBox(height: 5),
                     Text(
-                      '${carsDetail[index].carModel} ${carsDetail[index].carType}',
+                      '${widget.carsDetail[widget.index].carModel} ${widget.carsDetail[widget.index].carType}',
                       style: pageTitle,
                     ),
                     SizedBox(height: 15),
@@ -84,11 +90,11 @@ class CarDetailCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
-                          '${carsDetail[index].carColor}',
+                          '${widget.carsDetail[widget.index].carColor}',
                           style: smallText,
                         ),
                         Text(
-                          '${carsDetail[index].pricePerDay}JD',
+                          '${widget.carsDetail[widget.index].pricePerDay}JD',
                           style: smallText,
                         ),
                         Text(
